@@ -61,8 +61,8 @@ def autenticacion(cuenta):
             print("Demasiados intentos fallidos.")  
         else:
             print("Autenticacion fallida. Numero de cedula incorrecto.")          
-
-usuarios.append(crear_usuario("juan",1116280179,1234))    
+#llamamos la funcion, ella se encarga de agregar los valores a la lista
+crear_usuario("juan",1116280179,1234)    
 #menu de operaciones  
 print("Bienvenido al Cajero Multifuncional")
 
@@ -70,17 +70,15 @@ while True:
     print("Inicie sesion")
     cedula=int(input("Ingrese su cedula: "))
     bandera_crear_usuario = False
-    for diccionario_usuario in usuarios:
-        if type(diccionario_usuario)==dict:
-            print("es diccionario")
-            cedula_comparar=diccionario_usuario.get('cedula')
-            if cedula==cedula_comparar:
-                print(f"Bienvenido {diccionario_usuario['nombre']}")
-                print(usuarios.index(diccionario_usuario))
-                bandera_crear_usuario = False
-                break 
-            else:
-                bandera_crear_usuario = True
+    for diccionario_usuario in usuarios:    
+        cedula_comparar=diccionario_usuario.get('cedula')
+        if cedula==cedula_comparar:
+            print(f"Bienvenido {diccionario_usuario['nombre']}")
+            id_usuario=print(usuarios.index(diccionario_usuario))
+            bandera_crear_usuario = False
+            break 
+        else:
+            bandera_crear_usuario = True
     if bandera_crear_usuario:            
         print("El usuario no existe. Debe crear un usuario.")
         nombre=input("Ingrese su nombre completo: ")
