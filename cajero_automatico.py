@@ -62,7 +62,8 @@ def autenticacion(cuenta):
         else:
             print("Autenticacion fallida. Numero de cedula incorrecto.")          
 #llamamos la funcion, ella se encarga de agregar los valores a la lista
-crear_usuario("juan",1116280179,1234)    
+crear_usuario("juan",1116280179,1234)   
+crear_usuario("yully",1006465176,1234)   
 #menu de operaciones  
 print("Bienvenido al Cajero Multifuncional")
 
