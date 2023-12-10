@@ -3,7 +3,7 @@ import pandas as pd
 
 path='my_package/datos.xlsx'
 xls = pd.ExcelFile(path)
-df_existente = xls.parse('Hoja1')
+df_existente = xls.parse('users')
 
 def crear_usuario(nombre,cedula,contraseña):
     #datos que vamos a agregar al excel
@@ -27,11 +27,9 @@ def crear_usuario(nombre,cedula,contraseña):
     utils.write_to_excel(df_resultante)
     
 def actualizar_cuenta(data,id):
-    
     for columna, valor in data.items():
         df_existente.at[id[0], columna] = valor
-
-    utils.write_to_excel(df_existente)
+    utils.write_to_excel(df_existente,'users')
 
 def crear_cuenta_ahorro(cuenta_ahorros,saldo_ahorros):
     pass
