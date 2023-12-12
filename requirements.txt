@@ -1,0 +1,53 @@
+Funciones deL usuario:
+    - Retirar dinero de:
+        Cuenta de ahorro    
+        Tarjeta de crédito
+        Giro nacional
+        Giro internacional
+
+    - Consignar dinero a: 
+        Cuenta de ahorro 
+        Cuenta corriente
+        Giros nacional
+        Giro internacional
+
+    - Pagar facturas de servicios públicos:
+        Energía
+        Agua
+        Gas
+
+Funciones del cajero:
+    - Crear, eliminar, actualizar y buscar:
+        Tarjetas de crédito
+        Cuentas de ahorro
+        Cuentas corrientes
+    (en lo que concierne a contraseñas, usuarios y demás)
+
+    - Arroja un informe diario de sus transacciones bancarias, 
+    específica todo lo que hizo, cuánto dinero tiene virtual y físico, cuánto ganó, cuánto
+    le corresponde a las entidades de servicios públicos.
+
+    - Solicita autenticación para ciertas funciones como el recargar dinero, ver informes y demás. 
+    (admin)
+
+    - El cajero cobra el 4x1000.
+
+    - El cajero se queda con 10.000 con cada retiro por tarjeta de crédito
+
+    - El cajero no acepta monedas por parte de los usuarios finales
+
+    - El cajero solo entrega múltiplos de 10.000 en los retiros
+
+Consideraciones:
+    - El cajero empieza el día con algo de dinero, usted decide cuanto.
+    
+    - El cajero se recarga con billetes y monedas de denominación colombiana.
+    
+    - El cajero devuelve o entrega dinero especificando la cantidad y denominación de
+    cada billete o moneda.
+    
+    - Las contraseñas de seguridad deben aparecer encriptadas con asteriscos o
+    simplemente no aparecer.
+    
+    - Tenga en cuenta el comportamiento de las tarjetas de crédito, las cuentas de ahorro,
+    y las cuentas corrientes para no tener mal entendidos.

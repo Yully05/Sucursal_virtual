@@ -24,12 +24,12 @@ def crear_usuario(nombre,cedula,contraseña):
     # Concatenar DataFrames
     df_resultante = pd.concat([df_existente, df_nuevos_datos], ignore_index=True)
     # Escribir de nuevo al archivo Excel
-    utils.write_to_excel(df_resultante)
+    utils.write_to_excel(df_resultante,'users',path)
     
 def actualizar_cuenta(data,id):
     for columna, valor in data.items():
         df_existente.at[id[0], columna] = valor
-    utils.write_to_excel(df_existente,'users')
+    utils.write_to_excel(df_existente,'users',path)
 
 def crear_cuenta_ahorro(cuenta_ahorros,saldo_ahorros):
     pass

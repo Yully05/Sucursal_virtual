@@ -43,7 +43,9 @@ def retirar_dinero(cuenta):
         monto=int(input("Digite el monto: "))
         if user_data[cuenta]-monto>=0 and monto % 10000==0:
             print(f"""Retiro Exitoso, por favor retire su dinero ${monto}""")
-            user_data[cuenta]-=monto
+            print(f'se cobra impuesto 4x1000 por {monto*4/1000}')
+            #aqui se va a poner que cobre 10k a la t c
+            user_data[cuenta]-=(monto + monto*4/1000)
             cajero_automatico.entregar_dinero(monto)
             print(f"su nuevo saldo es: ${user_data[cuenta]}")
         elif monto % 10000 == 0:
@@ -52,11 +54,22 @@ def retirar_dinero(cuenta):
             print('Monto incorrecto')
     else:
             print('Clave incorrecta')
-            
-def retirar_giro(tipo):
-    if tipo == 'giro_nacional':
-        pass
-               
+def consignar(cuenta,tipo):
+    cantidad=int(input('digite la cantidad a consignar'))
+    numero_cuenta=int(input('digite el numero de cuenta'))
+    for diccionario_usuario in BD[cuenta].values:    
+        cuenta_comparar=diccionario_usuario
+        if numero_cuenta==cuenta_comparar:
+            user_data = BD[BD[cuenta] == numero_cuenta].to_dict(orient='records')[0]
+            user_data[tipo]+=cantidad
+            print(f"Consignando dinero ... a {user_data['nombre']}")
+            id_usuario=BD.index[BD[cuenta] == numero_cuenta].tolist()
+            print(f"Consignacion exitosa por {cantidad}")
+    accounts.actualizar_cuenta(user_data,id_usuario)
+        
+    
+    
+                   
 def menu_principal():
     print("___Menu principal___")
     print("""
@@ -70,10 +83,11 @@ def menu_principal():
 def menu_retirar():
     print("""
     De donde desea retirar?
-    1. Retirar dinero de la cuenta de ahorros
-    2. Retirar dinero de la tarjeta de credito
-    3. Retirar giro nacional
-    4. Retirar giro internacional
+    1. cuenta de ahorros
+    2. tarjeta de credito
+    3. cuenta corriente
+    4. giro nacional
+    5. giro internacional
     0. Volver al menu anterior
             """)
 def menu_consignar():
@@ -118,13 +132,15 @@ def run():
                 if opcion_retirar=="1":
                     retirar_dinero('saldo_ahorros')
                 elif opcion_retirar=="2":
-                    retirar_dinero('saldo_ahorros')
+                    retirar_dinero('saldo_tarjeta_credito')
                 elif opcion_retirar=="3":
-                    pass
+                    retirar_dinero('saldo_corriente')
                 elif opcion_retirar=="4":
-                    pass
+                    retirar_dinero('saldo_giro_nacional')
+                elif opcion_retirar=="5":
+                    retirar_dinero('saldo_giro_internacional')
                 elif opcion_retirar=="0":
-                    pass
+                    break
                 else:
                     print("Opcion invalida. Intente nuevamente: ")
             elif opcion_principal == "2":
@@ -132,9 +148,9 @@ def run():
                 menu_consignar()
                 opcion=input("Seleccione una opcion: ") 
                 if opcion=="1": #consignar cuenta ahorro
-                    pass
+                    consignar('cuenta_ahorros','saldo_ahorros')
                 elif opcion=="2":
-                    pass
+                    consignar('cuenta_corriente','saldo_corriente')
                 elif opcion=="3":
                     pass
                 elif opcion=="4":
